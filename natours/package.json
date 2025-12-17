@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start:dev": "nodemon server.js",
-    "start:prod": "NODE_ENV=production nodemon start"
+    "start:prod": "NODE_ENV=production nodemon start",
+    "debug": "ndb server.js"
   },
   "author": "Yash Shah",
   "license": "ISC",
@@ -26,6 +27,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-react": "^7.37.5",
+    "ndb": "^1.1.5",
     "nodemon": "^3.1.11",
     "prettier": "^3.7.4"
   },

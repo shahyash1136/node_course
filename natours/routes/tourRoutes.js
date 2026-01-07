@@ -9,7 +9,7 @@ const {
   getTourStats,
   getMonthlyPlan,
 } = require('../controllers/tourController');
-const { protect } = require('../controllers/authController');
+const { protect, restrictTo } = require('../controllers/authController');
 
 const router = express.Router();
 
@@ -22,6 +22,10 @@ router.route('/monthly-plan/:year').get(getMonthlyPlan);
 //Post is having multiple custom middleware chaining called checkBody
 router.route('/').get(protect, getAllTour).post(/* checkBody, */ createTour);
 
-router.route('/:id').get(getTour).patch(updateTour).delete(deleteTour);
+router
+  .route('/:id')
+  .get(getTour)
+  .patch(updateTour)
+  .delete(protect, restrictTo('admin', 'lead-guide'), deleteTour);
 
 module.exports = router;
